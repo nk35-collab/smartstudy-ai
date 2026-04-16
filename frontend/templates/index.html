@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SmartStudy AI</title>
+  <link rel="stylesheet" href="/static/css/style.css"/>
+</head>
+<body>
+  <!-- HEADER -->
+  <header>
+    <div class="logo">📚 SmartStudy AI</div>
+    <nav>
+      <button class="nav-btn active" data-tab="summarize">Summarize</button>
+      <button class="nav-btn" data-tab="quiz">Quiz Me</button>
+      <button class="nav-btn" data-tab="ask">Ask a Question</button>
+    </nav>
+  </header>
+
+  <main>
+    <!-- NOTES INPUT (shared) -->
+    <section class="notes-panel">
+      <label for="notes-input">📝 Paste Your Notes Here</label>
+      <textarea id="notes-input" placeholder="Paste your lecture notes, textbook content, or any study material here..."></textarea>
+      <div class="notes-meta" id="notes-meta">0 words</div>
+    </section>
+
+    <!-- TAB: SUMMARIZE -->
+    <section class="tab-panel active" id="tab-summarize">
+      <div class="panel-header">
+        <h2>🗂️ Smart Summary</h2>
+        <p>Get a concise, bullet-pointed summary of your notes.</p>
+      </div>
+      <button class="btn-primary" id="btn-summarize">Generate Summary</button>
+      <div class="result-box hidden" id="summary-result">
+        <h3>Summary</h3>
+        <div id="summary-content"></div>
+      </div>
+    </section>
+
+    <!-- TAB: QUIZ -->
+    <section class="tab-panel hidden" id="tab-quiz">
+      <div class="panel-header">
+        <h2>🧠 Practice Quiz</h2>
+        <p>Generate multiple-choice questions and get instant feedback.</p>
+      </div>
+      <div class="quiz-controls">
+        <label for="num-questions">Number of Questions:</label>
+        <select id="num-questions">
+          <option value="3">3</option>
+          <option value="5" selected>5</option>
+          <option value="7">7</option>
+          <option value="10">10</option>
+        </select>
+        <button class="btn-primary" id="btn-generate-quiz">Generate Quiz</button>
+      </div>
+      <div id="quiz-area" class="hidden">
+        <div id="questions-container"></div>
+        <button class="btn-primary" id="btn-submit-quiz">Submit Quiz</button>
+      </div>
+      <div class="result-box hidden" id="quiz-result">
+        <div id="score-display"></div>
+        <div id="feedback-content"></div>
+        <div id="answer-review"></div>
+        <button class="btn-secondary" id="btn-retake">Retake Quiz</button>
+      </div>
+    </section>
+
+    <!-- TAB: ASK -->
+    <section class="tab-panel hidden" id="tab-ask">
+      <div class="panel-header">
+        <h2>💬 Ask a Question</h2>
+        <p>Ask anything about your notes or course material.</p>
+      </div>
+      <div class="ask-row">
+        <input type="text" id="question-input" placeholder="e.g., What is the difference between mitosis and meiosis?" />
+        <button class="btn-primary" id="btn-ask">Ask</button>
+      </div>
+      <div class="result-box hidden" id="ask-result">
+        <h3>Answer</h3>
+        <div id="ask-content"></div>
+      </div>
+    </section>
+  </main>
+
+  <!-- LOADER -->
+  <div class="loader-overlay hidden" id="loader">
+    <div class="spinner"></div>
+    <p id="loader-msg">Thinking...</p>
+  </div>
+
+  <script src="/static/js/app.js"></script>
+</body>
+</html>
